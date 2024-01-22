@@ -23,7 +23,23 @@ public class HelloController {
 
     @FXML
     protected void onConvertBtnClick() {
+        double tempIn = Double.parseDouble(txtTemp.getText());
+        String fromUnit = cbxFromTemp.getValue().toString();
+        String toUnit = cbxToTemp.getValue().toString();
 
+        if (fromUnit.equals("Fahrenheit") && toUnit.equals("Celsius")) {
+            lblOut.setText(fToC(tempIn) + "Degrees");
+        } else if (fromUnit.equals("Celsius") && toUnit.equals("Fahrenheit")) {
+            lblOut.setText(cToF(tempIn) + "Degrees");
+        } else if (fromUnit.equals("Celsius") && toUnit.equals("Kelvin")) {
+            lblOut.setText(cToK(tempIn) + "Degrees");
+        } else if (fromUnit.equals("Fahrenheit") && toUnit.equals("Kelvin")) {
+            lblOut.setText(fToK(tempIn) + "Degrees");
+        } else if (fromUnit.equals("Kelvin") && toUnit.equals("Celsius")) {
+            lblOut.setText(kToC(tempIn) + "Degrees");
+        } else if (fromUnit.equals("Kelvin") && toUnit.equals("Fahrenheit")) {
+            lblOut.setText(kToF(tempIn) + "Degrees");
+        }
     }
 
     private double fToC(double tempF) {
